@@ -1,0 +1,1474 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     84117,       1465]
+NotebookOptionsPosition[     82761,       1414]
+NotebookOutlinePosition[     83103,       1429]
+CellTagsIndexPosition[     83060,       1426]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<Combinatorica`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.604093850091961*^9, 3.604093862221655*^9}, {
+  3.6040940177345495`*^9, 3.604094047679262*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "compat"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Combinatorica Graph and Permutations functionality has \
+been superseded by preloaded functionality. The package now being loaded may \
+conflict with this. Please see the Compatibility Guide for details.\"\>"}]], \
+"Message", "MSG",
+ CellChangeTimes->{3.6040940496593757`*^9, 3.6041031155329137`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{
+    RowBox[{"Import", "[", 
+     RowBox[{
+     "\"\<C:\\\\Users\\\\alex\\\\prj\\\\dopt\\\\coloring\\\\data\\\\gc_50_3\>\
+\"", ",", "\"\<Table\>\""}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"2", ";;", 
+      RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.604097730154888*^9, 3.604097759428562*^9}, {
+  3.6040978071842937`*^9, 3.604097832173723*^9}, {3.6040979453561964`*^9, 
+  3.6040979474033136`*^9}, {3.604098894629492*^9, 3.604098896251585*^9}, {
+  3.6040991866841965`*^9, 3.6040992407232876`*^9}, {3.604099305258979*^9, 
+  3.604099319050768*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"g", "=", 
+  RowBox[{"System`Graph", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "\[UndirectedEdge]", 
+      RowBox[{"#", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], "&"}], "/@", "data"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.604102205744877*^9, 3.6041022655732985`*^9}, {
+  3.6041042497687883`*^9, 3.6041042523479357`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{0, 3, 5, 8, 10, 42, 43, 45, 49, 1, 13, 15, 16, 20, 22, 24, 25, 27,
+       31, 35, 39, 46, 47, 2, 9, 12, 21, 28, 36, 48, 7, 11, 30, 33, 40, 4, 26,
+       44, 18, 32, 37, 6, 17, 23, 29, 41, 14, 34, 19, 38}, {
+      Null, CompressedData["
+1:eJwVxUcWpSgAAMBvQgwYEMUMoiJixKP0AWbRF5j77+ZNbWr6+++fv/bv9/vH
++v3+37Itx3ItzwKWb0ErCJ0wCuMQhUmYhlmYhzgsQhKWIQyrkNZ23dRe3dZx
+3dV9PdSgrmpaj7ZjM9u1G5vbuT3Zwib2YM82XNolXtCSLNmyLniZlnnxF7nA
+hTrM2ZzcUc7uAMd3oFM5gY410ofedKJPneleX1poond9a19DXbGGPWxjCetY
+yjK2soIpRtjOZnYzySpGWeByF7mHm7jY7d3CVe7r3q7v0sZr2uZp4sY0ebM2
+oiHN1/iN9A7PeIk3eYW3e59XeoDHfOMJT3nPC6644C8nfOc3rzhtnxa1R5u0
+fXu1Reu3sB3bIHqiODJREp1RFq3RFd2Pec5nfa5nf8pnfIIYxSbG8RQXsYhl
+PMYBOpBBObrQhAQi6EM3qtB4pMd5XIc6xCEPeFRbuvVbsYmNbMCcZjWX+Uxp
+gPENNNQESZb0yZ7MCUhkQru0y7q82zvZwRSnVzqlKr1TmdJ0TIMTn9epzvcE
+p5/lGc5UNmdj/uYwr/Jxxeu1TqtaxTqsYB3xhSesMME3lhhiisde9G9P+qHf
+e7+HV3GRy7/kBadi2qeyEMVQfMVcVMWoXkXUoEoFFFRUBeIVpbiFL6SAohL0
+Je/8+q98IRlISWZyE0DgAAY40CHYv73c/e/+wDfOcK5meoNbAgkoCHzpUwll
+ACkMKvof/0JG0g==
+       "]}]], Typeset`boxes, Typeset`boxes$s2d = GraphicsGroupBox[{{
+       Directive[
+        Opacity[0.7], 
+        Hue[0.6, 0.7, 0.5]], 
+       LineBox[{{
+          DynamicLocation["VertexID$1", Automatic, Center], 
+          DynamicLocation["VertexID$2", Automatic, Center]}, {
+          DynamicLocation["VertexID$1", Automatic, Center], 
+          DynamicLocation["VertexID$3", Automatic, Center]}, {
+          DynamicLocation["VertexID$1", Automatic, Center], 
+          DynamicLocation["VertexID$4", Automatic, Center]}, {
+          DynamicLocation["VertexID$1", Automatic, Center], 
+          DynamicLocation["VertexID$5", Automatic, Center]}, {
+          DynamicLocation["VertexID$1", Automatic, Center], 
+          DynamicLocation["VertexID$6", Automatic, Center]}, {
+          DynamicLocation["VertexID$1", Automatic, Center], 
+          DynamicLocation["VertexID$7", Automatic, Center]}, {
+          DynamicLocation["VertexID$1", Automatic, Center], 
+          DynamicLocation["VertexID$8", Automatic, Center]}, {
+          DynamicLocation["VertexID$1", Automatic, Center], 
+          DynamicLocation["VertexID$9", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$3", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$4", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$8", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$17", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$20", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$24", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$25", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$29", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$32", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$33", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], 
+          DynamicLocation["VertexID$35", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$6", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$7", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$8", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$9", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$10", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$17", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$22", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$39", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], 
+          DynamicLocation["VertexID$41", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$7", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$13", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$14", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$18", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$19", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$23", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$28", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$32", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$6", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$14", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$19", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$21", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$24", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$25", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$33", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$41", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], 
+          DynamicLocation["VertexID$50", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$9", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$14", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$20", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$23", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$24", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$29", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$37", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$39", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$44", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], 
+          DynamicLocation["VertexID$50", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$23", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$25", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$26", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$28", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$41", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$44", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$9", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$10", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$17", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$18", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$20", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$23", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$26", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$27", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$28", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$29", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$35", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$9", Automatic, Center], 
+          DynamicLocation["VertexID$12", Automatic, Center]}, {
+          DynamicLocation["VertexID$9", Automatic, Center], 
+          DynamicLocation["VertexID$15", Automatic, Center]}, {
+          DynamicLocation["VertexID$9", Automatic, Center], 
+          DynamicLocation["VertexID$26", Automatic, Center]}, {
+          DynamicLocation["VertexID$9", Automatic, Center], 
+          DynamicLocation["VertexID$29", Automatic, Center]}, {
+          DynamicLocation["VertexID$9", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$9", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$9", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$9", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$9", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$11", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$12", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$13", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$14", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$15", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$16", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$17", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$18", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$19", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$20", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$21", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$22", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], 
+          DynamicLocation["VertexID$23", Automatic, Center]}, {
+          DynamicLocation["VertexID$11", Automatic, Center], 
+          DynamicLocation["VertexID$12", Automatic, Center]}, {
+          DynamicLocation["VertexID$11", Automatic, Center], 
+          DynamicLocation["VertexID$14", Automatic, Center]}, {
+          DynamicLocation["VertexID$11", Automatic, Center], 
+          DynamicLocation["VertexID$16", Automatic, Center]}, {
+          DynamicLocation["VertexID$11", Automatic, Center], 
+          DynamicLocation["VertexID$37", Automatic, Center]}, {
+          DynamicLocation["VertexID$11", Automatic, Center], 
+          DynamicLocation["VertexID$44", Automatic, Center]}, {
+          DynamicLocation["VertexID$11", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$11", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$11", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$11", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$13", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$18", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$19", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$24", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$25", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$30", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$32", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$33", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$17", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$20", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$22", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$26", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$30", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$33", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], 
+          DynamicLocation["VertexID$50", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$16", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$23", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$26", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$28", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$32", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$35", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$41", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$18", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$23", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$27", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$30", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$32", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$33", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$39", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$16", Automatic, Center], 
+          DynamicLocation["VertexID$17", Automatic, Center]}, {
+          DynamicLocation["VertexID$16", Automatic, Center], 
+          DynamicLocation["VertexID$18", Automatic, Center]}, {
+          DynamicLocation["VertexID$16", Automatic, Center], 
+          DynamicLocation["VertexID$27", Automatic, Center]}, {
+          DynamicLocation["VertexID$16", Automatic, Center], 
+          DynamicLocation["VertexID$30", Automatic, Center]}, {
+          DynamicLocation["VertexID$16", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$16", Automatic, Center], 
+          DynamicLocation["VertexID$35", Automatic, Center]}, {
+          DynamicLocation["VertexID$16", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$16", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$16", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$17", Automatic, Center], 
+          DynamicLocation["VertexID$22", Automatic, Center]}, {
+          DynamicLocation["VertexID$17", Automatic, Center], 
+          DynamicLocation["VertexID$25", Automatic, Center]}, {
+          DynamicLocation["VertexID$17", Automatic, Center], 
+          DynamicLocation["VertexID$27", Automatic, Center]}, {
+          DynamicLocation["VertexID$17", Automatic, Center], 
+          DynamicLocation["VertexID$30", Automatic, Center]}, {
+          DynamicLocation["VertexID$17", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$20", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$23", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$30", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$33", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$37", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$44", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$18", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$22", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$26", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$29", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$30", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$32", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$33", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$35", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$39", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$19", Automatic, Center], 
+          DynamicLocation["VertexID$50", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$21", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$25", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$28", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$29", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$32", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$35", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$39", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$20", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$21", Automatic, Center], 
+          DynamicLocation["VertexID$33", Automatic, Center]}, {
+          DynamicLocation["VertexID$21", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$21", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$21", Automatic, Center], 
+          DynamicLocation["VertexID$41", Automatic, Center]}, {
+          DynamicLocation["VertexID$21", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$21", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$22", Automatic, Center], 
+          DynamicLocation["VertexID$23", Automatic, Center]}, {
+          DynamicLocation["VertexID$22", Automatic, Center], 
+          DynamicLocation["VertexID$24", Automatic, Center]}, {
+          DynamicLocation["VertexID$22", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$22", Automatic, Center], 
+          DynamicLocation["VertexID$32", Automatic, Center]}, {
+          DynamicLocation["VertexID$22", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$22", Automatic, Center], 
+          DynamicLocation["VertexID$35", Automatic, Center]}, {
+          DynamicLocation["VertexID$22", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$22", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$23", Automatic, Center], 
+          DynamicLocation["VertexID$24", Automatic, Center]}, {
+          DynamicLocation["VertexID$23", Automatic, Center], 
+          DynamicLocation["VertexID$29", Automatic, Center]}, {
+          DynamicLocation["VertexID$23", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$23", Automatic, Center], 
+          DynamicLocation["VertexID$32", Automatic, Center]}, {
+          DynamicLocation["VertexID$23", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$23", Automatic, Center], 
+          DynamicLocation["VertexID$35", Automatic, Center]}, {
+          DynamicLocation["VertexID$23", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$23", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$23", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$24", Automatic, Center], 
+          DynamicLocation["VertexID$25", Automatic, Center]}, {
+          DynamicLocation["VertexID$24", Automatic, Center], 
+          DynamicLocation["VertexID$26", Automatic, Center]}, {
+          DynamicLocation["VertexID$24", Automatic, Center], 
+          DynamicLocation["VertexID$27", Automatic, Center]}, {
+          DynamicLocation["VertexID$24", Automatic, Center], 
+          DynamicLocation["VertexID$28", Automatic, Center]}, {
+          DynamicLocation["VertexID$24", Automatic, Center], 
+          DynamicLocation["VertexID$29", Automatic, Center]}, {
+          DynamicLocation["VertexID$24", Automatic, Center], 
+          DynamicLocation["VertexID$30", Automatic, Center]}, {
+          DynamicLocation["VertexID$25", Automatic, Center], 
+          DynamicLocation["VertexID$26", Automatic, Center]}, {
+          DynamicLocation["VertexID$25", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$25", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$25", Automatic, Center], 
+          DynamicLocation["VertexID$37", Automatic, Center]}, {
+          DynamicLocation["VertexID$25", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$25", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$25", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$25", Automatic, Center], 
+          DynamicLocation["VertexID$50", Automatic, Center]}, {
+          DynamicLocation["VertexID$26", Automatic, Center], 
+          DynamicLocation["VertexID$28", Automatic, Center]}, {
+          DynamicLocation["VertexID$26", Automatic, Center], 
+          DynamicLocation["VertexID$30", Automatic, Center]}, {
+          DynamicLocation["VertexID$26", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$26", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$26", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$26", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$27", Automatic, Center], 
+          DynamicLocation["VertexID$31", Automatic, Center]}, {
+          DynamicLocation["VertexID$27", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$27", Automatic, Center], 
+          DynamicLocation["VertexID$41", Automatic, Center]}, {
+          DynamicLocation["VertexID$28", Automatic, Center], 
+          DynamicLocation["VertexID$29", Automatic, Center]}, {
+          DynamicLocation["VertexID$28", Automatic, Center], 
+          DynamicLocation["VertexID$32", Automatic, Center]}, {
+          DynamicLocation["VertexID$28", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$28", Automatic, Center], 
+          DynamicLocation["VertexID$39", Automatic, Center]}, {
+          DynamicLocation["VertexID$28", Automatic, Center], 
+          DynamicLocation["VertexID$41", Automatic, Center]}, {
+          DynamicLocation["VertexID$28", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$28", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$29", Automatic, Center], 
+          DynamicLocation["VertexID$37", Automatic, Center]}, {
+          DynamicLocation["VertexID$29", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$30", Automatic, Center], 
+          DynamicLocation["VertexID$37", Automatic, Center]}, {
+          DynamicLocation["VertexID$30", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$30", Automatic, Center], 
+          DynamicLocation["VertexID$50", Automatic, Center]}, {
+          DynamicLocation["VertexID$31", Automatic, Center], 
+          DynamicLocation["VertexID$35", Automatic, Center]}, {
+          DynamicLocation["VertexID$31", Automatic, Center], 
+          DynamicLocation["VertexID$37", Automatic, Center]}, {
+          DynamicLocation["VertexID$31", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$31", Automatic, Center], 
+          DynamicLocation["VertexID$39", Automatic, Center]}, {
+          DynamicLocation["VertexID$31", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$31", Automatic, Center], 
+          DynamicLocation["VertexID$41", Automatic, Center]}, {
+          DynamicLocation["VertexID$31", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$31", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$32", Automatic, Center], 
+          DynamicLocation["VertexID$34", Automatic, Center]}, {
+          DynamicLocation["VertexID$32", Automatic, Center], 
+          DynamicLocation["VertexID$39", Automatic, Center]}, {
+          DynamicLocation["VertexID$32", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$32", Automatic, Center], 
+          DynamicLocation["VertexID$41", Automatic, Center]}, {
+          DynamicLocation["VertexID$32", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$32", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$33", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$33", Automatic, Center], 
+          DynamicLocation["VertexID$37", Automatic, Center]}, {
+          DynamicLocation["VertexID$33", Automatic, Center], 
+          DynamicLocation["VertexID$41", Automatic, Center]}, {
+          DynamicLocation["VertexID$34", Automatic, Center], 
+          DynamicLocation["VertexID$37", Automatic, Center]}, {
+          DynamicLocation["VertexID$34", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$34", Automatic, Center], 
+          DynamicLocation["VertexID$39", Automatic, Center]}, {
+          DynamicLocation["VertexID$34", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$34", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$34", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$34", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$35", Automatic, Center], 
+          DynamicLocation["VertexID$36", Automatic, Center]}, {
+          DynamicLocation["VertexID$35", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$36", Automatic, Center], 
+          DynamicLocation["VertexID$37", Automatic, Center]}, {
+          DynamicLocation["VertexID$36", Automatic, Center], 
+          DynamicLocation["VertexID$38", Automatic, Center]}, {
+          DynamicLocation["VertexID$37", Automatic, Center], 
+          DynamicLocation["VertexID$40", Automatic, Center]}, {
+          DynamicLocation["VertexID$37", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$37", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$37", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$38", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$38", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$38", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$38", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$39", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$40", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$40", Automatic, Center], 
+          DynamicLocation["VertexID$44", Automatic, Center]}, {
+          DynamicLocation["VertexID$40", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$41", Automatic, Center], 
+          DynamicLocation["VertexID$42", Automatic, Center]}, {
+          DynamicLocation["VertexID$41", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$41", Automatic, Center], 
+          DynamicLocation["VertexID$50", Automatic, Center]}, {
+          DynamicLocation["VertexID$42", Automatic, Center], 
+          DynamicLocation["VertexID$43", Automatic, Center]}, {
+          DynamicLocation["VertexID$42", Automatic, Center], 
+          DynamicLocation["VertexID$44", Automatic, Center]}, {
+          DynamicLocation["VertexID$42", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$42", Automatic, Center], 
+          DynamicLocation["VertexID$46", Automatic, Center]}, {
+          DynamicLocation["VertexID$43", Automatic, Center], 
+          DynamicLocation["VertexID$44", Automatic, Center]}, {
+          DynamicLocation["VertexID$43", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$44", Automatic, Center], 
+          DynamicLocation["VertexID$45", Automatic, Center]}, {
+          DynamicLocation["VertexID$44", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$44", Automatic, Center], 
+          DynamicLocation["VertexID$48", Automatic, Center]}, {
+          DynamicLocation["VertexID$44", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$45", Automatic, Center], 
+          DynamicLocation["VertexID$47", Automatic, Center]}, {
+          DynamicLocation["VertexID$45", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$46", Automatic, Center], 
+          DynamicLocation["VertexID$50", Automatic, Center]}, {
+          DynamicLocation["VertexID$47", Automatic, Center], 
+          DynamicLocation["VertexID$49", Automatic, Center]}, {
+          DynamicLocation["VertexID$49", Automatic, Center], 
+          DynamicLocation["VertexID$50", Automatic, Center]}}]}, {
+       Directive[
+        Hue[0.6, 0.2, 0.8], 
+        EdgeForm[
+         Directive[
+          GrayLevel[0], 
+          Opacity[0.7]]]], 
+       TagBox[
+        DiskBox[{2.8356795682061744`, 0.896826498353771}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$1"], 
+       TagBox[
+        DiskBox[{2.273485112627805, 2.1191075740617027`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$2"], 
+       TagBox[
+        DiskBox[{2.4129690895097795`, 1.766547715828195}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$3"], 
+       TagBox[
+        DiskBox[{2.1802606454935187`, 0.7810152177106234}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$4"], 
+       TagBox[
+        DiskBox[{1.006034677786606, 1.5290130951786007`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$5"], 
+       TagBox[
+        DiskBox[{1.5546421918720807`, 0.7306183839179873}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$6"], 
+       TagBox[
+        DiskBox[{1.8440448221757708`, 0.7370838643797604}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$7"], 
+       TagBox[
+        DiskBox[{1.769086086112252, 1.4228746199310485`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$8"], 
+       TagBox[
+        DiskBox[{1.733754583673812, 0.4570111303966964}, 0.02910288677995429],
+         "DynamicName", BoxID -> "VertexID$9"], 
+       TagBox[
+        DiskBox[{1.0098052884869853`, 2.229263854918287}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$10"], 
+       TagBox[
+        DiskBox[{0., 0.8977158685916036}, 0.02910288677995429], "DynamicName",
+         BoxID -> "VertexID$11"], 
+       TagBox[
+        DiskBox[{0.5872582874207524, 1.4239791138916202`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$12"], 
+       TagBox[
+        DiskBox[{0.8788021553599444, 1.3464652997501567`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$13"], 
+       TagBox[
+        DiskBox[{1.4095170706600397`, 1.6575819709234867`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$14"], 
+       TagBox[
+        DiskBox[{1.2295973054939544`, 1.373071589706104}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$15"], 
+       TagBox[
+        DiskBox[{0.7128527626547686, 2.3314468784654805`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$16"], 
+       TagBox[
+        DiskBox[{1.5377181714438135`, 2.6239214010360525`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$17"], 
+       TagBox[
+        DiskBox[{0.7492769155789202, 1.135080113365275}, 0.02910288677995429],
+         "DynamicName", BoxID -> "VertexID$18"], 
+       TagBox[
+        DiskBox[{1.2537338226896413`, 1.7916269773093494`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$19"], 
+       TagBox[
+        DiskBox[{1.6667420435577074`, 1.5680312978580881`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$20"], 
+       TagBox[
+        DiskBox[{0.23611896470825955`, 1.693521759301153}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$21"], 
+       TagBox[
+        DiskBox[{2.011498150344576, 2.1453200481184407`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$22"], 
+       TagBox[
+        DiskBox[{1.9038634846351106`, 1.6201028512145008`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$23"], 
+       TagBox[
+        DiskBox[{1.5367384311529482`, 2.230228645817802}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$24"], 
+       TagBox[
+        DiskBox[{0.7711641082356766, 1.6782901452475465`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$25"], 
+       TagBox[
+        DiskBox[{1.009827375976771, 0.940440989835143}, 0.02910288677995429], 
+        "DynamicName", BoxID -> "VertexID$26"], 
+       TagBox[
+        DiskBox[{1.2038943789296677`, 2.8429921917141687`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$27"], 
+       TagBox[
+        DiskBox[{2.5327662502853467`, 1.512870917663486}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$28"], 
+       TagBox[
+        DiskBox[{2.2232271487780024`, 1.0866783202027517`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$29"], 
+       TagBox[
+        DiskBox[{0.15229258692008374`, 1.9440072976174003`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$30"], 
+       TagBox[
+        DiskBox[{1.5664481480769106`, 1.8444831888911164`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$31"], 
+       TagBox[
+        DiskBox[{2.153456605113816, 1.5077548287744604`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$32"], 
+       TagBox[
+        DiskBox[{0.4025596801546497, 2.259314823510331}, 0.02910288677995429],
+         "DynamicName", BoxID -> "VertexID$33"], 
+       TagBox[
+        DiskBox[{1.6421870308333284`, 1.2316129207775197`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$34"], 
+       TagBox[
+        DiskBox[{1.982181744304597, 2.592977071767828}, 0.02910288677995429], 
+        "DynamicName", BoxID -> "VertexID$35"], 
+       TagBox[
+        DiskBox[{0.7573401165933583, 1.9472165965999095`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$36"], 
+       TagBox[
+        DiskBox[{0.4656720301485855, 1.0669494749376236`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$37"], 
+       TagBox[
+        DiskBox[{1.2520514863325414`, 1.0335895340031294`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$38"], 
+       TagBox[
+        DiskBox[{2.5995926027825504`, 1.0544215208266698`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$39"], 
+       TagBox[
+        DiskBox[{1.5035428608222026`, 0.9953015906444367}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$40"], 
+       TagBox[
+        DiskBox[{1.2012525380214873`, 2.06001532998851}, 0.02910288677995429],
+         "DynamicName", BoxID -> "VertexID$41"], 
+       TagBox[
+        DiskBox[{1.7581211337174345`, 0.9949594601477874}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$42"], 
+       TagBox[
+        DiskBox[{1.5193842407671625`, 0.3486426172615502}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$43"], 
+       TagBox[
+        DiskBox[{1.1304987412034593`, 0.}, 0.02910288677995429], 
+        "DynamicName", BoxID -> "VertexID$44"], 
+       TagBox[
+        DiskBox[{0.8737340578432644, 0.4234392699507691}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$45"], 
+       TagBox[
+        DiskBox[{1.1194702066985731`, 0.5689211163867984}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$46"], 
+       TagBox[
+        DiskBox[{0.26684048968101726`, 0.731709142233619}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$47"], 
+       TagBox[
+        DiskBox[{2.4609441043470097`, 1.2626429452318506`}, 
+         0.02910288677995429], "DynamicName", BoxID -> "VertexID$48"], 
+       TagBox[
+        DiskBox[{0.6354470248274275, 0.615950534149067}, 0.02910288677995429],
+         "DynamicName", BoxID -> "VertexID$49"], 
+       TagBox[
+        DiskBox[{0.008439874982049345, 1.279841514755087}, 
+         0.02910288677995429], "DynamicName", BoxID -> 
+        "VertexID$50"]}}], $CellContext`flag}, 
+    TagBox[
+     DynamicBox[GraphComputation`NetworkGraphicsBox[
+      3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+      CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+       SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+      ImageSizeCache->{{10.2, 549.8000000000001}, {-272.24800000000005`, 
+       268.7104734478453}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False,
+    UnsavedVariables:>{$CellContext`flag}]],
+  DefaultBaseStyle->{
+   "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+  FrameTicks->None,
+  ImageSize->{561., Automatic}]], "Output",
+ CellChangeTimes->{{3.6041022501524167`*^9, 3.604102266075328*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"<<", "GraphUtilities`"}]], "Input",
+ CellChangeTimes->{{3.6041041113468714`*^9, 3.604104111348871*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"VertexColoring", "[", 
+  RowBox[{"ToCombinatoricaGraph", "@", "g"}], "]"}]], "Input",
+ CellChangeTimes->{{3.604102308810772*^9, 3.604102312235968*^9}, {
+  3.604103120855218*^9, 3.604103124974454*^9}, {3.6041040884735627`*^9, 
+  3.6041041157041206`*^9}, {3.604104817347252*^9, 3.6041048193463664`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "3", ",", "5", ",", "4", ",", "4", ",", "4", 
+   ",", "2", ",", "5", ",", "8", ",", "4", ",", "6", ",", "6", ",", "3", ",", 
+   "2", ",", "1", ",", "1", ",", "2", ",", "3", ",", "2", ",", "4", ",", "2", 
+   ",", "3", ",", "6", ",", "1", ",", "6", ",", "2", ",", "1", ",", "5", ",", 
+   "1", ",", "1", ",", "7", ",", "3", ",", "5", ",", "3", ",", "2", ",", "5", 
+   ",", "5", ",", "5", ",", "8", ",", "1", ",", "2", ",", "3", ",", "7", ",", 
+   "2", ",", "4", ",", "6", ",", "1", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{3.604104117670233*^9, 3.604104820703444*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "@", "LoadAndColor"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"LoadAndColor", "[", "file_String", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"data", "=", 
+        RowBox[{
+         RowBox[{"Import", "[", 
+          RowBox[{"file", ",", "\"\<Table\>\""}], "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"2", ";;", 
+           RowBox[{"-", "1"}]}], "]"}], "]"}]}], ",", "g"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"g", "=", 
+       RowBox[{"System`Graph", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "\[UndirectedEdge]", 
+           RowBox[{"#", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], "&"}], "/@", "data"}], "]"}]}], 
+      ";", 
+      RowBox[{"VertexColoring", "[", 
+       RowBox[{"ToCombinatoricaGraph", "@", "g"}], "]"}]}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.6041042954794025`*^9, 3.6041043814633207`*^9}, 
+   3.6041044478641186`*^9, {3.6041048258367376`*^9, 3.6041048271588135`*^9}, {
+   3.6041049081724467`*^9, 3.604104921546212*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LoadAndColor", "[", 
+  "\"\<C:\\\\Users\\\\alex\\\\prj\\\\dopt\\\\coloring\\\\data\\\\gc_50_3\>\"",
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6041048474669747`*^9, 3.604104852219247*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "3", ",", "5", ",", "4", ",", "4", ",", "4", 
+   ",", "2", ",", "5", ",", "8", ",", "4", ",", "6", ",", "6", ",", "3", ",", 
+   "2", ",", "1", ",", "1", ",", "2", ",", "3", ",", "2", ",", "4", ",", "2", 
+   ",", "3", ",", "6", ",", "1", ",", "6", ",", "2", ",", "1", ",", "5", ",", 
+   "1", ",", "1", ",", "7", ",", "3", ",", "5", ",", "3", ",", "2", ",", "5", 
+   ",", "5", ",", "5", ",", "8", ",", "1", ",", "2", ",", "3", ",", "7", ",", 
+   "2", ",", "4", ",", "6", ",", "1", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{3.604104853435316*^9, 3.604104926456493*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LoadAndColor", "[", 
+  "\"\<C:\\\\Users\\\\alex\\\\prj\\\\dopt\\\\coloring\\\\data\\\\gc_70_7\>\"",
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6041043846245017`*^9, 3.6041043898087983`*^9}, {
+  3.6041044205825586`*^9, 3.604104426677907*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "3", ",", "4", ",", "13", ",", "5", ",", "6", 
+   ",", "5", ",", "11", ",", "14", ",", "6", ",", "18", ",", "10", ",", "16", 
+   ",", "7", ",", "16", ",", "3", ",", "8", ",", "10", ",", "9", ",", "3", 
+   ",", "5", ",", "4", ",", "8", ",", "15", ",", "7", ",", "20", ",", "9", 
+   ",", "2", ",", "20", ",", "9", ",", "14", ",", "2", ",", "10", ",", "6", 
+   ",", "11", ",", "13", ",", "21", ",", "4", ",", "17", ",", "15", ",", "8", 
+   ",", "9", ",", "11", ",", "7", ",", "11", ",", "11", ",", "4", ",", "1", 
+   ",", "8", ",", "14", ",", "12", ",", "4", ",", "15", ",", "1", ",", "6", 
+   ",", "12", ",", "12", ",", "17", ",", "1", ",", "19", ",", "15", ",", "16",
+    ",", "18", ",", "21", ",", "13", ",", "10", ",", "15", ",", "2"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.604104427790971*^9, 3.60410446082286*^9, 
+  3.604104932412833*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LoadAndColor", "[", 
+  "\"\<C:\\\\Users\\\\alex\\\\prj\\\\dopt\\\\coloring\\\\data\\\\gc_100_5\>\"\
+", "]"}]], "Input",
+ CellChangeTimes->{{3.604104488829462*^9, 3.604104492173653*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "2", ",", "5", ",", "3", ",", "6", ",", "12", ",", "4", 
+   ",", "3", ",", "14", ",", "2", ",", "3", ",", "5", ",", "5", ",", "7", ",",
+    "13", ",", "2", ",", "8", ",", "2", ",", "17", ",", "18", ",", "10", ",", 
+   "6", ",", "7", ",", "10", ",", "6", ",", "7", ",", "9", ",", "11", ",", 
+   "12", ",", "7", ",", "11", ",", "18", ",", "6", ",", "11", ",", "20", ",", 
+   "9", ",", "6", ",", "3", ",", "8", ",", "16", ",", "11", ",", "4", ",", 
+   "4", ",", "15", ",", "18", ",", "9", ",", "20", ",", "2", ",", "16", ",", 
+   "1", ",", "8", ",", "7", ",", "11", ",", "4", ",", "3", ",", "10", ",", 
+   "12", ",", "10", ",", "5", ",", "4", ",", "1", ",", "13", ",", "14", ",", 
+   "9", ",", "1", ",", "14", ",", "4", ",", "9", ",", "15", ",", "10", ",", 
+   "15", ",", "7", ",", "10", ",", "17", ",", "12", ",", "16", ",", "13", ",",
+    "9", ",", "15", ",", "13", ",", "16", ",", "15", ",", "8", ",", "10", ",",
+    "14", ",", "17", ",", "6", ",", "8", ",", "13", ",", "12", ",", "15", ",",
+    "11", ",", "5", ",", "7", ",", "5", ",", "1", ",", "19", ",", "1", ",", 
+   "15"}], "}"}]], "Output",
+ CellChangeTimes->{3.6041045095636477`*^9, 3.604104935566014*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LoadAndColor", "[", 
+  "\"\<C:\\\\Users\\\\alex\\\\prj\\\\dopt\\\\coloring\\\\data\\\\gc_250_9\>\"\
+", "]"}]], "Input",
+ CellChangeTimes->{{3.6041045566843433`*^9, 3.6041045602615476`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "49", ",", "6", ",", "97",
+    ",", "7", ",", "8", ",", "35", ",", "9", ",", "10", ",", "11", ",", "75", 
+   ",", "12", ",", "13", ",", "14", ",", "15", ",", "56", ",", "6", ",", "16",
+    ",", "17", ",", "12", ",", "81", ",", "8", ",", "18", ",", "27", ",", "2",
+    ",", "77", ",", "13", ",", "3", ",", "19", ",", "65", ",", "20", ",", "5",
+    ",", "64", ",", "46", ",", "52", ",", "70", ",", "70", ",", "73", ",", 
+   "71", ",", "2", ",", "42", ",", "60", ",", "12", ",", "10", ",", "47", ",",
+    "13", ",", "86", ",", "5", ",", "87", ",", "17", ",", "21", ",", "82", 
+   ",", "29", ",", "38", ",", "9", ",", "41", ",", "46", ",", "61", ",", "28",
+    ",", "34", ",", "69", ",", "29", ",", "86", ",", "7", ",", "48", ",", "5",
+    ",", "59", ",", "18", ",", "22", ",", "19", ",", "20", ",", "23", ",", 
+   "32", ",", "32", ",", "68", ",", "48", ",", "50", ",", "76", ",", "38", 
+   ",", "24", ",", "30", ",", "57", ",", "29", ",", "44", ",", "59", ",", 
+   "25", ",", "43", ",", "79", ",", "74", ",", "26", ",", "25", ",", "27", 
+   ",", "24", ",", "59", ",", "60", ",", "14", ",", "66", ",", "91", ",", 
+   "11", ",", "81", ",", "33", ",", "93", ",", "27", ",", "96", ",", "80", 
+   ",", "36", ",", "15", ",", "72", ",", "16", ",", "76", ",", "89", ",", 
+   "54", ",", "84", ",", "69", ",", "39", ",", "39", ",", "43", ",", "67", 
+   ",", "74", ",", "51", ",", "78", ",", "56", ",", "77", ",", "16", ",", 
+   "52", ",", "44", ",", "14", ",", "40", ",", "23", ",", "34", ",", "73", 
+   ",", "62", ",", "41", ",", "66", ",", "28", ",", "54", ",", "53", ",", 
+   "51", ",", "69", ",", "43", ",", "26", ",", "53", ",", "22", ",", "8", ",",
+    "79", ",", "92", ",", "54", ",", "51", ",", "45", ",", "37", ",", "72", 
+   ",", "81", ",", "7", ",", "40", ",", "36", ",", "79", ",", "63", ",", "88",
+    ",", "3", ",", "84", ",", "19", ",", "89", ",", "48", ",", "29", ",", 
+   "42", ",", "58", ",", "6", ",", "90", ",", "55", ",", "34", ",", "82", ",",
+    "49", ",", "63", ",", "11", ",", "50", ",", "21", ",", "64", ",", "18", 
+   ",", "71", ",", "23", ",", "57", ",", "50", ",", "67", ",", "39", ",", 
+   "82", ",", "80", ",", "30", ",", "35", ",", "87", ",", "56", ",", "38", 
+   ",", "49", ",", "78", ",", "33", ",", "31", ",", "32", ",", "43", ",", 
+   "21", ",", "63", ",", "7", ",", "17", ",", "52", ",", "93", ",", "37", ",",
+    "31", ",", "55", ",", "46", ",", "36", ",", "4", ",", "75", ",", "25", 
+   ",", "31", ",", "70", ",", "26", ",", "39", ",", "57", ",", "1", ",", "62",
+    ",", "80", ",", "42", ",", "94", ",", "47", ",", "58", ",", "41", ",", 
+   "55", ",", "33", ",", "66", ",", "15", ",", "88", ",", "10", ",", "85", 
+   ",", "59", ",", "76", ",", "35", ",", "72", ",", "74", ",", "83", ",", 
+   "68", ",", "44", ",", "84", ",", "65", ",", "85", ",", "61", ",", "20", 
+   ",", "45", ",", "95"}], "}"}]], "Output",
+ CellChangeTimes->{3.60410480629362*^9, 3.6041049408163137`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LoadAndColor", "[", 
+  "\"\<C:\\\\Users\\\\alex\\\\prj\\\\dopt\\\\coloring\\\\data\\\\gc_500_1\>\"\
+", "]"}]], "Input",
+ CellChangeTimes->{{3.6041049628345737`*^9, 3.604104964465667*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "2", ",", "11", ",", "7", ",", "2", ",", "9", ",", "3", 
+   ",", "8", ",", "5", ",", "6", ",", "7", ",", "2", ",", "5", ",", "14", ",",
+    "3", ",", "3", ",", "11", ",", "2", ",", "2", ",", "15", ",", "4", ",", 
+   "10", ",", "7", ",", "4", ",", "2", ",", "3", ",", "4", ",", "8", ",", "8",
+    ",", "3", ",", "2", ",", "5", ",", "5", ",", "5", ",", "8", ",", "2", ",",
+    "2", ",", "11", ",", "18", ",", "5", ",", "16", ",", "7", ",", "4", ",", 
+   "2", ",", "12", ",", "2", ",", "12", ",", "6", ",", "7", ",", "8", ",", 
+   "3", ",", "3", ",", "6", ",", "14", ",", "11", ",", "15", ",", "13", ",", 
+   "12", ",", "13", ",", "3", ",", "13", ",", "8", ",", "4", ",", "4", ",", 
+   "7", ",", "15", ",", "12", ",", "1", ",", "7", ",", "1", ",", "5", ",", 
+   "13", ",", "3", ",", "3", ",", "8", ",", "3", ",", "7", ",", "11", ",", 
+   "2", ",", "2", ",", "8", ",", "13", ",", "15", ",", "3", ",", "1", ",", 
+   "11", ",", "11", ",", "4", ",", "11", ",", "5", ",", "1", ",", "12", ",", 
+   "13", ",", "8", ",", "10", ",", "17", ",", "9", ",", "7", ",", "11", ",", 
+   "1", ",", "15", ",", "3", ",", "12", ",", "16", ",", "13", ",", "4", ",", 
+   "11", ",", "4", ",", "11", ",", "12", ",", "15", ",", "5", ",", "7", ",", 
+   "12", ",", "14", ",", "4", ",", "9", ",", "13", ",", "11", ",", "5", ",", 
+   "8", ",", "6", ",", "1", ",", "7", ",", "8", ",", "10", ",", "6", ",", "4",
+    ",", "6", ",", "8", ",", "17", ",", "1", ",", "2", ",", "4", ",", "13", 
+   ",", "12", ",", "4", ",", "2", ",", "8", ",", "2", ",", "6", ",", "10", 
+   ",", "1", ",", "10", ",", "7", ",", "6", ",", "4", ",", "2", ",", "2", ",",
+    "7", ",", "5", ",", "9", ",", "16", ",", "8", ",", "3", ",", "4", ",", 
+   "9", ",", "2", ",", "5", ",", "4", ",", "10", ",", "4", ",", "7", ",", 
+   "12", ",", "12", ",", "16", ",", "16", ",", "9", ",", "5", ",", "3", ",", 
+   "14", ",", "11", ",", "10", ",", "1", ",", "7", ",", "5", ",", "5", ",", 
+   "8", ",", "1", ",", "1", ",", "6", ",", "5", ",", "3", ",", "9", ",", "13",
+    ",", "14", ",", "12", ",", "12", ",", "6", ",", "1", ",", "3", ",", "3", 
+   ",", "1", ",", "8", ",", "6", ",", "1", ",", "14", ",", "6", ",", "1", ",",
+    "12", ",", "14", ",", "2", ",", "9", ",", "8", ",", "10", ",", "11", ",", 
+   "5", ",", "9", ",", "3", ",", "2", ",", "7", ",", "3", ",", "4", ",", "2", 
+   ",", "4", ",", "14", ",", "17", ",", "16", ",", "5", ",", "14", ",", "9", 
+   ",", "2", ",", "8", ",", "12", ",", "10", ",", "5", ",", "15", ",", "2", 
+   ",", "6", ",", "2", ",", "12", ",", "5", ",", "5", ",", "6", ",", "2", ",",
+    "4", ",", "7", ",", "12", ",", "14", ",", "6", ",", "16", ",", "12", ",", 
+   "6", ",", "8", ",", "1", ",", "11", ",", "1", ",", "15", ",", "11", ",", 
+   "6", ",", "11", ",", "3", ",", "10", ",", "7", ",", "11", ",", "16", ",", 
+   "6", ",", "7", ",", "2", ",", "7", ",", "1", ",", "6", ",", "1", ",", "7", 
+   ",", "14", ",", "5", ",", "1", ",", "8", ",", "16", ",", "3", ",", "1", 
+   ",", "7", ",", "13", ",", "4", ",", "5", ",", "6", ",", "11", ",", "1", 
+   ",", "11", ",", "10", ",", "8", ",", "5", ",", "10", ",", "4", ",", "11", 
+   ",", "11", ",", "2", ",", "12", ",", "7", ",", "15", ",", "8", ",", "4", 
+   ",", "8", ",", "4", ",", "6", ",", "3", ",", "1", ",", "16", ",", "15", 
+   ",", "16", ",", "13", ",", "7", ",", "1", ",", "7", ",", "4", ",", "7", 
+   ",", "3", ",", "4", ",", "1", ",", "9", ",", "2", ",", "13", ",", "10", 
+   ",", "4", ",", "6", ",", "10", ",", "6", ",", "11", ",", "8", ",", "13", 
+   ",", "15", ",", "2", ",", "6", ",", "6", ",", "6", ",", "12", ",", "13", 
+   ",", "4", ",", "17", ",", "1", ",", "3", ",", "9", ",", "11", ",", "9", 
+   ",", "10", ",", "2", ",", "10", ",", "3", ",", "10", ",", "1", ",", "1", 
+   ",", "10", ",", "5", ",", "4", ",", "14", ",", "10", ",", "15", ",", "6", 
+   ",", "15", ",", "8", ",", "10", ",", "5", ",", "10", ",", "5", ",", "6", 
+   ",", "5", ",", "17", ",", "12", ",", "9", ",", "8", ",", "1", ",", "15", 
+   ",", "9", ",", "9", ",", "5", ",", "5", ",", "15", ",", "1", ",", "1", ",",
+    "5", ",", "17", ",", "10", ",", "15", ",", "4", ",", "4", ",", "13", ",", 
+   "9", ",", "7", ",", "2", ",", "4", ",", "4", ",", "11", ",", "6", ",", 
+   "11", ",", "5", ",", "6", ",", "18", ",", "8", ",", "13", ",", "1", ",", 
+   "10", ",", "11", ",", "7", ",", "11", ",", "8", ",", "15", ",", "3", ",", 
+   "3", ",", "13", ",", "3", ",", "1", ",", "7", ",", "5", ",", "12", ",", 
+   "3", ",", "5", ",", "8", ",", "3", ",", "3", ",", "12", ",", "1", ",", 
+   "10", ",", "3", ",", "9", ",", "4", ",", "13", ",", "7", ",", "10", ",", 
+   "17", ",", "13", ",", "10", ",", "6", ",", "2", ",", "13", ",", "9", ",", 
+   "11", ",", "13", ",", "12", ",", "2", ",", "9", ",", "7", ",", "10", ",", 
+   "5", ",", "11", ",", "4", ",", "5", ",", "3", ",", "2", ",", "14", ",", 
+   "8", ",", "10", ",", "7", ",", "10", ",", "6", ",", "3", ",", "5", ",", 
+   "16", ",", "12", ",", "5", ",", "10", ",", "8", ",", "5", ",", "1", ",", 
+   "17", ",", "4", ",", "3", ",", "9", ",", "10", ",", "9", ",", "15", ",", 
+   "10", ",", "16", ",", "9", ",", "18", ",", "11", ",", "13", ",", "16", ",",
+    "9", ",", "14", ",", "12", ",", "1", ",", "4", ",", "7", ",", "15", ",", 
+   "13", ",", "11", ",", "14", ",", "14", ",", "9", ",", "8", ",", "14", ",", 
+   "9", ",", "12", ",", "10", ",", "16", ",", "2", ",", "6", ",", "8", ",", 
+   "6", ",", "9", ",", "1", ",", "14", ",", "10", ",", "14", ",", "14", ",", 
+   "15", ",", "5", ",", "9", ",", "14"}], "}"}]], "Output",
+ CellChangeTimes->{3.6041049661147614`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LoadAndColor", "[", 
+  "\"\<C:\\\\Users\\\\alex\\\\prj\\\\dopt\\\\coloring\\\\data\\\\gc_1000_5\>\"\
+", "]"}]], "Input",
+ CellChangeTimes->{{3.6041049781214476`*^9, 3.604104981545644*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "74", ",", "3", ",", "49", ",", "37", ",", "4", ",", 
+   "78", ",", "22", ",", "93", ",", "68", ",", "60", ",", "13", ",", "65", 
+   ",", "6", ",", "11", ",", "71", ",", "12", ",", "18", ",", "112", ",", 
+   "73", ",", "66", ",", "8", ",", "15", ",", "5", ",", "83", ",", "19", ",", 
+   "105", ",", "15", ",", "61", ",", "48", ",", "11", ",", "35", ",", "23", 
+   ",", "19", ",", "7", ",", "45", ",", "9", ",", "91", ",", "78", ",", "75", 
+   ",", "86", ",", "14", ",", "19", ",", "71", ",", "11", ",", "30", ",", 
+   "76", ",", "58", ",", "55", ",", "6", ",", "6", ",", "95", ",", "69", ",", 
+   "90", ",", "50", ",", "24", ",", "100", ",", "34", ",", "17", ",", "8", 
+   ",", "116", ",", "86", ",", "61", ",", "5", ",", "12", ",", "19", ",", 
+   "97", ",", "55", ",", "109", ",", "3", ",", "44", ",", "114", ",", "6", 
+   ",", "53", ",", "10", ",", "4", ",", "7", ",", "99", ",", "108", ",", "62",
+    ",", "93", ",", "49", ",", "16", ",", "8", ",", "9", ",", "47", ",", "17",
+    ",", "11", ",", "40", ",", "54", ",", "58", ",", "75", ",", "61", ",", 
+   "43", ",", "84", ",", "98", ",", "57", ",", "85", ",", "55", ",", "18", 
+   ",", "35", ",", "4", ",", "115", ",", "44", ",", "27", ",", "42", ",", 
+   "81", ",", "56", ",", "55", ",", "22", ",", "23", ",", "43", ",", "3", ",",
+    "3", ",", "44", ",", "6", ",", "75", ",", "81", ",", "25", ",", "39", ",",
+    "19", ",", "17", ",", "19", ",", "84", ",", "109", ",", "30", ",", "32", 
+   ",", "95", ",", "114", ",", "106", ",", "68", ",", "48", ",", "9", ",", 
+   "25", ",", "61", ",", "27", ",", "31", ",", "42", ",", "24", ",", "63", 
+   ",", "110", ",", "107", ",", "22", ",", "103", ",", "15", ",", "31", ",", 
+   "33", ",", "46", ",", "115", ",", "41", ",", "33", ",", "57", ",", "21", 
+   ",", "16", ",", "79", ",", "65", ",", "45", ",", "38", ",", "7", ",", "8", 
+   ",", "65", ",", "38", ",", "26", ",", "31", ",", "82", ",", "65", ",", 
+   "87", ",", "100", ",", "105", ",", "12", ",", "41", ",", "24", ",", "111", 
+   ",", "119", ",", "21", ",", "13", ",", "31", ",", "103", ",", "14", ",", 
+   "6", ",", "78", ",", "99", ",", "37", ",", "47", ",", "58", ",", "81", ",",
+    "13", ",", "70", ",", "11", ",", "26", ",", "98", ",", "75", ",", "95", 
+   ",", "82", ",", "29", ",", "64", ",", "116", ",", "88", ",", "84", ",", 
+   "56", ",", "81", ",", "66", ",", "33", ",", "51", ",", "76", ",", "28", 
+   ",", "24", ",", "38", ",", "68", ",", "66", ",", "101", ",", "3", ",", 
+   "31", ",", "12", ",", "97", ",", "9", ",", "74", ",", "6", ",", "15", ",", 
+   "18", ",", "60", ",", "114", ",", "35", ",", "50", ",", "102", ",", "18", 
+   ",", "73", ",", "36", ",", "77", ",", "36", ",", "5", ",", "2", ",", "2", 
+   ",", "16", ",", "49", ",", "59", ",", "112", ",", "97", ",", "25", ",", 
+   "56", ",", "57", ",", "54", ",", "7", ",", "23", ",", "27", ",", "116", 
+   ",", "36", ",", "83", ",", "85", ",", "71", ",", "86", ",", "63", ",", "8",
+    ",", "79", ",", "32", ",", "10", ",", "100", ",", "96", ",", "75", ",", 
+   "108", ",", "34", ",", "112", ",", "52", ",", "116", ",", "70", ",", "113",
+    ",", "63", ",", "101", ",", "14", ",", "70", ",", "6", ",", "116", ",", 
+   "110", ",", "66", ",", "21", ",", "95", ",", "56", ",", "76", ",", "14", 
+   ",", "104", ",", "47", ",", "37", ",", "13", ",", "64", ",", "76", ",", 
+   "27", ",", "90", ",", "63", ",", "102", ",", "54", ",", "13", ",", "17", 
+   ",", "30", ",", "105", ",", "88", ",", "73", ",", "64", ",", "118", ",", 
+   "32", ",", "2", ",", "18", ",", "38", ",", "93", ",", "5", ",", "75", ",", 
+   "104", ",", "43", ",", "96", ",", "112", ",", "32", ",", "67", ",", "26", 
+   ",", "2", ",", "57", ",", "57", ",", "4", ",", "55", ",", "7", ",", "76", 
+   ",", "3", ",", "25", ",", "19", ",", "44", ",", "89", ",", "89", ",", "41",
+    ",", "30", ",", "17", ",", "55", ",", "98", ",", "55", ",", "47", ",", 
+   "20", ",", "53", ",", "81", ",", "8", ",", "106", ",", "8", ",", "4", ",", 
+   "71", ",", "45", ",", "40", ",", "90", ",", "43", ",", "72", ",", "106", 
+   ",", "73", ",", "87", ",", "24", ",", "18", ",", "108", ",", "19", ",", 
+   "90", ",", "100", ",", "29", ",", "14", ",", "9", ",", "88", ",", "103", 
+   ",", "86", ",", "64", ",", "71", ",", "40", ",", "7", ",", "16", ",", "7", 
+   ",", "113", ",", "26", ",", "101", ",", "6", ",", "73", ",", "26", ",", 
+   "70", ",", "90", ",", "30", ",", "40", ",", "57", ",", "15", ",", "106", 
+   ",", "19", ",", "33", ",", "29", ",", "97", ",", "45", ",", "39", ",", 
+   "52", ",", "34", ",", "96", ",", "70", ",", "27", ",", "37", ",", "80", 
+   ",", "39", ",", "3", ",", "21", ",", "5", ",", "46", ",", "32", ",", "102",
+    ",", "84", ",", "20", ",", "48", ",", "120", ",", "53", ",", "46", ",", 
+   "121", ",", "13", ",", "96", ",", "33", ",", "31", ",", "2", ",", "16", 
+   ",", "62", ",", "88", ",", "32", ",", "99", ",", "101", ",", "72", ",", 
+   "58", ",", "29", ",", "26", ",", "47", ",", "72", ",", "104", ",", "26", 
+   ",", "97", ",", "83", ",", "58", ",", "60", ",", "52", ",", "54", ",", 
+   "17", ",", "14", ",", "15", ",", "11", ",", "102", ",", "67", ",", "54", 
+   ",", "99", ",", "71", ",", "21", ",", "53", ",", "111", ",", "82", ",", 
+   "98", ",", "5", ",", "10", ",", "66", ",", "65", ",", "35", ",", "50", ",",
+    "8", ",", "97", ",", "61", ",", "42", ",", "29", ",", "51", ",", "90", 
+   ",", "94", ",", "23", ",", "40", ",", "20", ",", "63", ",", "96", ",", 
+   "11", ",", "57", ",", "10", ",", "21", ",", "95", ",", "78", ",", "24", 
+   ",", "99", ",", "47", ",", "83", ",", "10", ",", "35", ",", "48", ",", 
+   "111", ",", "39", ",", "57", ",", "52", ",", "13", ",", "115", ",", "25", 
+   ",", "68", ",", "13", ",", "29", ",", "44", ",", "15", ",", "18", ",", 
+   "77", ",", "80", ",", "91", ",", "91", ",", "44", ",", "20", ",", "70", 
+   ",", "14", ",", "108", ",", "102", ",", "99", ",", "56", ",", "29", ",", 
+   "90", ",", "43", ",", "23", ",", "24", ",", "46", ",", "70", ",", "11", 
+   ",", "30", ",", "112", ",", "9", ",", "81", ",", "105", ",", "74", ",", 
+   "45", ",", "42", ",", "39", ",", "1", ",", "60", ",", "84", ",", "51", ",",
+    "27", ",", "22", ",", "80", ",", "18", ",", "43", ",", "51", ",", "75", 
+   ",", "55", ",", "105", ",", "43", ",", "36", ",", "72", ",", "38", ",", 
+   "26", ",", "24", ",", "66", ",", "84", ",", "25", ",", "16", ",", "68", 
+   ",", "100", ",", "59", ",", "85", ",", "98", ",", "48", ",", "23", ",", 
+   "36", ",", "23", ",", "88", ",", "84", ",", "63", ",", "52", ",", "50", 
+   ",", "96", ",", "48", ",", "85", ",", "81", ",", "37", ",", "24", ",", "9",
+    ",", "35", ",", "58", ",", "80", ",", "23", ",", "52", ",", "108", ",", 
+   "80", ",", "11", ",", "60", ",", "94", ",", "28", ",", "34", ",", "11", 
+   ",", "79", ",", "22", ",", "4", ",", "10", ",", "92", ",", "83", ",", "38",
+    ",", "72", ",", "105", ",", "20", ",", "45", ",", "92", ",", "27", ",", 
+   "60", ",", "4", ",", "30", ",", "63", ",", "16", ",", "80", ",", "42", ",",
+    "72", ",", "36", ",", "82", ",", "41", ",", "59", ",", "25", ",", "110", 
+   ",", "83", ",", "25", ",", "89", ",", "33", ",", "69", ",", "17", ",", 
+   "31", ",", "106", ",", "62", ",", "107", ",", "17", ",", "102", ",", "59", 
+   ",", "100", ",", "1", ",", "102", ",", "101", ",", "39", ",", "63", ",", 
+   "115", ",", "16", ",", "43", ",", "30", ",", "50", ",", "87", ",", "73", 
+   ",", "41", ",", "77", ",", "15", ",", "1", ",", "59", ",", "38", ",", "89",
+    ",", "55", ",", "33", ",", "1", ",", "68", ",", "67", ",", "87", ",", 
+   "114", ",", "10", ",", "69", ",", "58", ",", "49", ",", "87", ",", "34", 
+   ",", "77", ",", "113", ",", "44", ",", "36", ",", "103", ",", "32", ",", 
+   "120", ",", "55", ",", "86", ",", "8", ",", "59", ",", "87", ",", "28", 
+   ",", "77", ",", "60", ",", "16", ",", "89", ",", "15", ",", "86", ",", 
+   "50", ",", "8", ",", "43", ",", "47", ",", "54", ",", "72", ",", "54", ",",
+    "107", ",", "22", ",", "91", ",", "82", ",", "60", ",", "26", ",", "42", 
+   ",", "41", ",", "28", ",", "31", ",", "39", ",", "76", ",", "33", ",", 
+   "51", ",", "118", ",", "89", ",", "119", ",", "21", ",", "67", ",", "46", 
+   ",", "27", ",", "92", ",", "35", ",", "34", ",", "71", ",", "80", ",", 
+   "52", ",", "7", ",", "85", ",", "12", ",", "85", ",", "5", ",", "4", ",", 
+   "70", ",", "106", ",", "114", ",", "56", ",", "37", ",", "59", ",", "92", 
+   ",", "14", ",", "83", ",", "34", ",", "110", ",", "3", ",", "20", ",", 
+   "95", ",", "18", ",", "91", ",", "95", ",", "53", ",", "67", ",", "112", 
+   ",", "59", ",", "5", ",", "88", ",", "85", ",", "17", ",", "1", ",", "46", 
+   ",", "49", ",", "3", ",", "88", ",", "57", ",", "46", ",", "54", ",", 
+   "119", ",", "73", ",", "18", ",", "64", ",", "68", ",", "46", ",", "45", 
+   ",", "83", ",", "29", ",", "23", ",", "118", ",", "66", ",", "65", ",", 
+   "24", ",", "80", ",", "79", ",", "117", ",", "1", ",", "51", ",", "12", 
+   ",", "108", ",", "87", ",", "105", ",", "42", ",", "38", ",", "66", ",", 
+   "117", ",", "9", ",", "64", ",", "75", ",", "67", ",", "39", ",", "62", 
+   ",", "94", ",", "40", ",", "52", ",", "46", ",", "81", ",", "78", ",", 
+   "91", ",", "108", ",", "68", ",", "83", ",", "67", ",", "67", ",", "57", 
+   ",", "41", ",", "37", ",", "10", ",", "109", ",", "4", ",", "87", ",", 
+   "20", ",", "99", ",", "78", ",", "89", ",", "51", ",", "7", ",", "82", ",",
+    "8", ",", "113", ",", "76", ",", "94", ",", "35", ",", "28", ",", "110", 
+   ",", "117", ",", "64", ",", "49", ",", "93", ",", "40", ",", "37", ",", 
+   "53", ",", "58", ",", "94", ",", "73", ",", "95", ",", "122", ",", "104", 
+   ",", "33", ",", "20", ",", "13", ",", "4", ",", "53", ",", "48", ",", "12",
+    ",", "62", ",", "113", ",", "76", ",", "1", ",", "86", ",", "50", ",", 
+   "75", ",", "85", ",", "94", ",", "33", ",", "107", ",", "51", ",", "2", 
+   ",", "78", ",", "22", ",", "38", ",", "60", ",", "73", ",", "92", ",", 
+   "63", ",", "88", ",", "5", ",", "68", ",", "34", ",", "93", ",", "48", ",",
+    "35", ",", "58", ",", "28", ",", "61", ",", "61", ",", "82", ",", "70", 
+   ",", "56", ",", "110", ",", "59", ",", "94", ",", "1", ",", "54", ",", 
+   "39", ",", "6", ",", "74", ",", "36", ",", "23", ",", "103", ",", "21", 
+   ",", "65", ",", "111", ",", "107", ",", "17", ",", "109", ",", "91", ",", 
+   "22", ",", "11", ",", "79", ",", "117", ",", "25", ",", "4", ",", "104", 
+   ",", "47", ",", "5", ",", "61", ",", "15", ",", "8", ",", "57", ",", "92", 
+   ",", "61", ",", "69", ",", "28", ",", "49", ",", "79", ",", "104", ",", 
+   "77", ",", "32", ",", "53", ",", "79", ",", "50", ",", "34", ",", "37", 
+   ",", "49", ",", "106", ",", "21", ",", "9", ",", "45", ",", "87", ",", 
+   "91", ",", "12", ",", "97", ",", "29", ",", "75", ",", "32", ",", "101", 
+   ",", "31", ",", "58", ",", "72", ",", "20", ",", "99", ",", "2", ",", "44",
+    ",", "92", ",", "103", ",", "109", ",", "41", ",", "41", ",", "31", ",", 
+   "44", ",", "40", ",", "42", ",", "2", ",", "65", ",", "62", ",", "10", ",",
+    "52", ",", "25", ",", "109", ",", "45", ",", "12", ",", "69", ",", "72", 
+   ",", "103", ",", "5", ",", "111", ",", "77", ",", "82", ",", "70", ",", 
+   "67", ",", "98", ",", "49", ",", "69", ",", "42", ",", "121", ",", "99", 
+   ",", "62", ",", "28", ",", "46", ",", "42", ",", "22", ",", "109", ",", 
+   "104", ",", "69", ",", "56", ",", "39", ",", "84", ",", "59", ",", "74", 
+   ",", "2", ",", "28", ",", "103", ",", "100", ",", "62", ",", "106", ",", 
+   "47", ",", "22", ",", "95", ",", "111", ",", "74", ",", "74", ",", "89", 
+   ",", "41", ",", "93", ",", "70", ",", "27", ",", "96", ",", "75", ",", 
+   "78", ",", "40", ",", "22", ",", "14", ",", "99", ",", "30", ",", "81", 
+   ",", "93"}], "}"}]], "Output",
+ CellChangeTimes->{3.6041049992896585`*^9}]
+}, Open  ]]
+},
+WindowSize->{707, 867},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 196, 3, 31, "Input"],
+Cell[778, 27, 423, 9, 56, "Message"]
+}, Open  ]],
+Cell[1216, 39, 644, 15, 52, "Input"],
+Cell[CellGroupData[{
+Cell[1885, 58, 423, 12, 31, "Input"],
+Cell[2311, 72, 53425, 897, 576, "Output"]
+}, Open  ]],
+Cell[55751, 972, 127, 2, 31, "Input"],
+Cell[CellGroupData[{
+Cell[55903, 978, 325, 5, 31, "Input"],
+Cell[56231, 985, 644, 10, 52, "Output"]
+}, Open  ]],
+Cell[56890, 998, 1228, 34, 112, "Input"],
+Cell[CellGroupData[{
+Cell[58143, 1036, 211, 4, 31, "Input"],
+Cell[58357, 1042, 644, 10, 52, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59038, 1057, 264, 5, 31, "Input"],
+Cell[59305, 1064, 918, 15, 92, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[60260, 1084, 209, 4, 31, "Input"],
+Cell[60472, 1090, 1225, 18, 112, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61734, 1113, 213, 4, 31, "Input"],
+Cell[61950, 1119, 2993, 41, 292, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[64980, 1165, 211, 4, 31, "Input"],
+Cell[65194, 1171, 5564, 74, 472, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[70795, 1250, 212, 4, 31, "Input"],
+Cell[71010, 1256, 11735, 155, 1144, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

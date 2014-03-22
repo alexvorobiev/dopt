@@ -15,7 +15,7 @@ def solve_it(input_data):
 
     # Runs the command: java Solver -file=tmp.data
 
-    process = Popen(['c:/R/R-3.0.3/bin/x64/Rscript', 'solver.R', '-file=' + tmp_file_name], stdout=PIPE)
+    process = Popen(['c:/Program Files/R/R-3.0.3/bin/x64/Rscript', 'solver.R', '-file=' + tmp_file_name], stdout=PIPE)
     (stdout, stderr) = process.communicate()
 
     # removes the temporay file
