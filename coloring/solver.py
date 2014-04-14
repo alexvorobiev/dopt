@@ -17,8 +17,28 @@ def solve_it(input_data):
 
     # Runs the command: java Solver -file=tmp.data
 
-    process = Popen(['C:/Program Files/Wolfram Research/Mathematica/9.0/math', '-script', 'solver.m',  tmp_file_name], stdout=PIPE)
+    #process = Popen(['C:/Program Files/Wolfram Research/Mathematica/9.0/math', '-script', 'solver.m',  tmp_file_name], stdout=PIPE)
     #process = Popen(['c:/Program Files/R/R-3.0.3/bin/x64/Rscript', 'solver.R', '-file=' + tmp_file_name], stdout=PIPE)
+
+
+# def solve_it_dsatur_2(input_data):
+#     """Solver for another DSATUR implementation
+#     """
+
+#     # Writes the inputData to a temporay file
+
+#     #tmp_file_name = 'tmp.data'
+#     #tmp_file = open(tmp_file_name, 'w')
+#     tmp_file = tempfile.NamedTemporaryFile(dir='./', prefix='input_graph.',
+#                                            delete=False)
+#     tmp_file.write(input_data)
+#     tmp_file.close()
+
+#     # Run DSATUR
+
+    process = Popen(['./run_coloring.sh', tmp_file.name], stdout=PIPE)
+
+
     (stdout, stderr) = process.communicate()
 
     # removes the temporay file
