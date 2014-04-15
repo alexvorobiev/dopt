@@ -3,7 +3,7 @@ args <- commandArgs(trailingOnly = TRUE)
 file <- substr(args, 7, nchar(args[1]))
 
                                         #file <- 'data/fl_25_2'
-file <- 'data/fl_3_1'
+#file <- 'data/fl_test'
 
 params <- read.table(file, nrows = 1)
 names(params) <- c('N', 'M')
@@ -17,8 +17,22 @@ c <- read.table(file, skip = 1 + params$N, nrows = params$M)
 names(c) <- c('d', 'x', 'y')
 
 ## Coordinates as lists of pairs x, y
-fs <- split(f[, c('x', 'y')], rownames(f))
-cs <- split(c[, c('x', 'y')], rownames(c))
+## fs <- split(f[, c('x', 'y')], rownames(f))
+## cs <- split(c[, c('x', 'y')], rownames(c))
+
+## fs <- split(f, row(f))[, c('x', 'y')]
+## cs <- split(c, row(c))[, c('x', 'y')]
+
+## fs <- t(apply(f, 1, function(x) x[c(3, 4)]))
+## cs <- t(apply(c, 1, function(x) x[c(3, 4)]))
+
+## There is got to be a better way...
+width.f <- max(nchar(rownames(f)))
+width.c <- max(nchar(rownames(c)))
+
+fs <- split(f[, c('x', 'y')], formatC(rownames(f), width = width.f, format = 'd', flag = '0'))
+cs <- split(c[, c('x', 'y')], formatC(rownames(c), width = width.c, format = 'd', flag = '0'))
+
 
 ## N by M matrix of distances
 t <- outer(fs, cs, FUN = Vectorize(function(a, b) dist(rbind(a, b))))
@@ -55,8 +69,11 @@ rel2 <- rep('==', params$M)
 ## Capacity constraint 
 lhs3 <- cbind(
     matrix(0, nrow = params$N, ncol = params$N),
-    do.call(rbind, lapply(1:params$M,
-                          function(w) 
+    do.call(cbind, lapply(1:params$M,
+                          function(w) diag(params$N) * c$d[[w]]
+                          )))
+rhs3 <- f$cap
+rel3 <- rep('<=', params$N)
 
 suppressWarnings(suppressMessages(require('Rglpk')))
 
@@ -70,7 +87,7 @@ types <- rep('B', params$N * (1 + params$M))
 
 res <- Rglpk_solve_LP(obj, mat, dir, rhs, max = max, types = types)
 
-cat(paste0(res$optimum, ' ', abs(1 - res$status), '\n'))
+cat(paste0(round(res$optimum), ' ', abs(1 - res$status), '\n'))
 
 cw <- sapply(
     split(res$solution[-(1:params$N)],
