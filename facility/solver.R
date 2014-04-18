@@ -4,7 +4,8 @@ file <- substr(args, 7, nchar(args[1]))
 
 #file <- 'data/fl_test'
 
-#file <- 'data/fl_100_1'
+##file <- 'data/fl_200_7'
+file <- 'data/fl_500_7'
 
 params <- read.table(file, nrows = 1)
 names(params) <- c('N', 'M')
@@ -94,7 +95,10 @@ lhs2 <- cBind(
 
 
 rhs2 <- rep(1, params$M)
+
 rel2 <- rep('==', params$M)
+
+                                        #rel2 <- rep('=', params$M)
 
 ## Capacity constraint 
 
@@ -119,9 +123,12 @@ rhs3 <- f$cap
 rel3 <- rep('<=', params$N)
 
 suppressWarnings(suppressMessages(require('Rglpk')))
+###suppressWarnings(suppressMessages(require('gurobi')))
 
 mat <- rBind(lhs1, lhs2, lhs3)
+
 dir <- c(rel1, rel2, rel3)
+
 rhs <- c(rhs1, rhs2, rhs3)
 
 max <- FALSE
@@ -130,12 +137,42 @@ types <- rep('B', params$N * (1 + params$M))
 
 res <- Rglpk_solve_LP(obj, mat, dir, rhs, max = max, types = types)
 
-cat(paste0(round(res$optimum), ' ', abs(1 - res$status), '\n'))
+model  <- list()
+     
+model$A      <- mat
+model$obj    <- obj
+
+model$sense  <- dir
+
+model$modelsense <- 'min'
+
+model$rhs    <- rhs
+model$vtype  <- "B"
+     
+                                        #gparams <- list(Presolve=2, TimeLimit=100.0)
+gparams <- list(Presolve=2, TuneOutput = 0,
+                OutputFlag = 0, TimeLimit = 200.,
+                ConcurrentMIP =  4)
+     
+res <- gurobi(model, gparams)
+
+
+res <- gurobi(obj, mat, dir, rhs, max = max, types = types)
+
+                                        #cat(paste0(round(res$optimum), ' ', abs(1 - res$status), '\n'))
+
+cat(paste0(round(res$objval), ' ', 0, '\n'))
+
+## cw <- sapply(
+##     split(res$solution[-(1:params$N)],
+##           sapply(1:params$M, function(c) rep(c, params$N))),
+##     function(c) which.max(c))
 
 cw <- sapply(
-    split(res$solution[-(1:params$N)],
+    split(res$x[-(1:params$N)],
           sapply(1:params$M, function(c) rep(c, params$N))),
     function(c) which.max(c))
+
 
 cat(paste0(cw - 1, collapse = ' '))
 cat('\n')
