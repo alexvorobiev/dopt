@@ -18,19 +18,41 @@ names(f) <- c('s', 'cap', 'x', 'y')
 c <- read.table(file, skip = 1 + params$N, nrows = params$M)
 names(c) <- c('d', 'x', 'y')
 
+## break the plane into rectangular areas based on x- and y- ranges of facilities
+x.N <- 3
+y.N <- 3
+
+x.q <- quantile(f$x, probs = seq(0, 1, 1./x.N))
+y.q <- quantile(f$y, probs = seq(0, 1, 1./y.N))
+
+x.breaks <- c(-Inf, x.breaks[c(-1, -length(x.breaks))], Inf)
+y.breaks <- c(-Inf, y.breaks[c(-1, -length(y.breaks))], Inf)
+
+f$x.rect <- cut(f$x, breaks = x.breaks, right = TRUE)
+f$y.rect <- cut(f$y, breaks = y.breaks, right = TRUE)
+
+## apply to customers
+c$x.rect <- cut(c$x, breaks = x.breaks, right = TRUE)
+c$y.rect <- cut(c$y, breaks = y.breaks, right = TRUE)
+
 ## Coordinates as lists of pairs x, y
-## fs <- split(f[, c('x', 'y')], rownames(f))
-## cs <- split(c[, c('x', 'y')], rownames(c))
-
-## fs <- split(f, row(f))[, c('x', 'y')]
-## cs <- split(c, row(c))[, c('x', 'y')]
-
-## fs <- t(apply(f, 1, function(x) x[c(3, 4)]))
-## cs <- t(apply(c, 1, function(x) x[c(3, 4)]))
 
 ## There is got to be a better way...
 width.f <- max(nchar(rownames(f)))
 width.c <- max(nchar(rownames(c)))
+
+suppressMessages(library(foreach))
+suppressMessages(library(doParallel))
+
+#makeCluster()
+
+registerDoParallel()
+
+foreach(i = levels(c$x.rect), .combine = c) %:% 
+    foreach(j = levels(c$y.rect), .combine = c) %do% {
+        nrow(subset(c, x.rect == i & y.rect == j))
+    }
+
 
 fs <- split(f[, c('x', 'y')], formatC(rownames(f), width = width.f, format = 'd', flag = '0'))
 cs <- split(c[, c('x', 'y')], formatC(rownames(c), width = width.c, format = 'd', flag = '0'))
