@@ -4,7 +4,9 @@ file <- substr(args, 7, nchar(args[1]))
 
                                         #file <- 'data/fl_test'
 
-##file <- 'data/fl_200_7'
+## #4
+file <- 'data/fl_200_7'
+
 file <- 'data/fl_500_7'
 
 params <- read.table(file, nrows = 1)
@@ -219,6 +221,7 @@ res <- foreach(i = levels(c$x.rect), .combine = list,
     }
 
 
+res <- fOptim(f = f, c = c, params = params)
 
 cat(paste0(round(res$objval), ' ', 0, '\n'))
 
