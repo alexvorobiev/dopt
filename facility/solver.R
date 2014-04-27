@@ -2,12 +2,15 @@ args <- commandArgs(trailingOnly = TRUE)
 
 file <- substr(args, 7, nchar(args[1]))
 
-                                        #file <- 'data/fl_test'
+
+##file <- 'data/fl_test'
 
 ## #4
-file <- 'data/fl_200_7'
 
+## 6
 file <- 'data/fl_500_7'
+
+file <- 'data/fl_100_1'
 
 params <- read.table(file, nrows = 1)
 names(params) <- c('N', 'M')
@@ -21,6 +24,7 @@ c <- read.table(file, skip = 1 + params$N, nrows = params$M)
 names(c) <- c('d', 'x', 'y')
 
 ## break the plane into rectangular areas based on x- and y- ranges of facilities
+
 x.N <- 4
 y.N <- 4
 
@@ -37,27 +41,36 @@ f$y.rect <- cut(f$y, breaks = y.breaks, right = TRUE)
 c$x.rect <- cut(c$x, breaks = x.breaks, right = TRUE)
 c$y.rect <- cut(c$y, breaks = y.breaks, right = TRUE)
 
-suppressMessages(library(foreach))
+require(foreach)
+require(doParallel)
 
-suppressMessages(library(doParallel))
+require(Matrix)
+
+require('Rglpk')
+
+## 32bit R only
+require('gurobi')
+
+
+require(Rmosek)
 
 cl <- makeCluster()
 
-registerDoParallel(4)
+registerDoParallel(2)
 
 ## See if the spatial distribution of facilities and customers is as
 ## uniform as they claim...
 foreach(i = levels(c$x.rect), .combine = rbind) %:% 
-    foreach(j = levels(c$y.rect), .combine = c) %do% {
+    foreach(j = levels(c$y.rect), .combine = c) %dopar% {
         nrow(subset(f, x.rect == i & y.rect == j))
     }
 
 foreach(i = levels(c$x.rect), .combine = rbind) %:% 
-    foreach(j = levels(c$y.rect), .combine = c) %do% {
+    foreach(j = levels(c$y.rect), .combine = c) %dopar% {
         nrow(subset(c, x.rect == i & y.rect == j))
     }
 
-fOptim <- function(f, c, params) {
+fOptim <- function(f, c, params, solver, opt) {
     ## Coordinates as lists of pairs x, y
 
     ## There is got to be a better way...
@@ -65,8 +78,12 @@ fOptim <- function(f, c, params) {
     width.c <- max(nchar(rownames(c)))
 
 
-    fs <- split(f[, c('x', 'y')], formatC(rownames(f), width = width.f, format = 'd', flag = '0'))
-    cs <- split(c[, c('x', 'y')], formatC(rownames(c), width = width.c, format = 'd', flag = '0'))
+    fs <- split(f[, c('x', 'y')],
+                formatC(rownames(f), width = width.f,
+                        format = 'd', flag = '0'))
+    cs <- split(c[, c('x', 'y')],
+                formatC(rownames(c), width = width.c,
+                        format = 'd', flag = '0'))
 
 
     ## N by M matrix of distances
@@ -75,8 +92,6 @@ fOptim <- function(f, c, params) {
     ## Objective function: all facilities, then distance matrix columnwise
     ## (so that variables for each customer go together)
     obj <- c(f$s, as.vector(t))
-
-    suppressWarnings(suppressMessages(require ('Matrix')))
 
     ## Matrix of constraints
     ## Assign customer to facility only if it is open: y_{w, c} <= x_{w}
@@ -102,17 +117,8 @@ fOptim <- function(f, c, params) {
     rhs1 <- rep(0, params$N * params$M)
     rel1 <- rep('<=', params$N * params$M)
 
+    print(dim(lhs1))
     ## One facility for a customer: Sum_{w} y_{w, c} = 1
-
-    ## lhs2 <- cbind(
-    ##     matrix(0, nrow = params$M, ncol = params$N),
-    ##     do.call(rbind, lapply(1:params$M,
-    ##                           function(w) {
-    ##                               c(rep(0, params$N * (w - 1)),
-    ##                                 rep(1, params$N),
-    ##                                 rep(0, params$N * (params$M - w)))
-    ##                           })))
-
 
     bandM <- Matrix(0, nrow = params$M, ncol = params$N * params$M)
 
@@ -142,21 +148,12 @@ fOptim <- function(f, c, params) {
         m3[((i - 1) * sq) + seq(1, sq, params$N + 1)] <- c$d[[i]]
     }
 
-    ## lhs3 <- cBind(
-    ##     Matrix(0, nrow = params$N, ncol = params$N),
-    ##     do.call(cBind, lapply(1:params$M,
-    ##                           function(w) Diagonal(params$N) * c$d[[w]]
-    ##                           )))
-
     lhs3 <- cBind(
         Matrix(0, nrow = params$N, ncol = params$N),
         m3)
 
     rhs3 <- f$cap
     rel3 <- rep('<=', params$N)
-
-    #suppressWarnings(suppressMessages(require('Rglpk')))
-###suppressWarnings(suppressMessages(require('gurobi')))
 
     mat <- rBind(lhs1, lhs2, lhs3)
 
@@ -167,11 +164,10 @@ fOptim <- function(f, c, params) {
     max <- FALSE
 
     types <- rep('B', params$N * (1 + params$M))
-    print(params$N)
-    print(params$M)
-    print(dim(m3))
-    print(dim(lhs3))
-    print(length(rhs3))
+
+    solver(obj, mat, dir, rhs, max, types, opt)
+}
+solver.Rglpk <- function(obj, mat, dir, rhs, max, type, opt) {
     res <- Rglpk_solve_LP(obj, mat, dir, rhs, max = max, types = types)
 
     ## model  <- list()
@@ -204,9 +200,80 @@ fOptim <- function(f, c, params) {
     
     list(res$objval, cw)
 }
+solver.gurobi <- function(obj, mat, dir, rhs, max, type, opt) {
+    model  <- list()
+    
+    model$A      <- mat
+    model$obj    <- obj
+
+    model$sense  <- ifelse(dir == '==', '=', dir)
+
+    model$modelsense <- 'min'
+
+    model$rhs    <- rhs
+    model$vtype  <- "B"
+    
+                                        #gparams <- list(Presolve=2, TimeLimit=100.0)
+    gparams <- opt
+    
+    res <- gurobi(model, gparams)
 
 
+    ## res <- gurobi(obj, mat, dir, rhs, max = max, types = types)
 
+                                        #cat(paste0(round(res$optimum), ' ', abs(1 - res$status), '\n'))
+    cw <- sapply(
+        split(res$x[-(1:params$N)],
+              sapply(1:params$M, function(c) rep(c, params$N))),
+        function(c) which.max(c))
+    
+    list(res$objval, cw)
+}
+solver.mosek <- function(obj, mat, dir, rhs, max, type, opt) {
+
+    problem <- list(sense = "min")
+
+    problem$A <- mat
+
+    problem$c <- obj
+
+        ## lower and upper constraints
+    blc <- rep(-Inf, length(dir))
+    idx <- which(dir %in% c(">=", "=="))
+    blc[idx] <- rhs[idx]
+
+    buc <- rep(Inf, length(dir))
+    idx <- which(dir %in% c("<=", "=="))
+    buc[idx] <- rhs[idx]
+
+    problem$bc <- rbind(blc, buc)
+
+    ## variable constraints ([0, 1])
+    problem$bx <- rbind(rep(0, params$N * (1 + params$M)),
+                        rep(1, params$N * (1 + params$M)))
+
+    problem$intsub <- 1:(params$N * (1 + params$M))
+
+    problem$dparam <- opt$dparam
+    
+    res <- mosek(problem, opts = list(soldetail = 1))
+
+    ## cw <- sapply(
+    ##     split(res$x[-(1:params$N)],
+    ##           sapply(1:params$M, function(c) rep(c, params$N))),
+    ##     function(c) which.max(c))
+
+                                        #list(res$pobjval, res$sol)
+    return(res)
+}
+
+capture.output.helper <- function (file, code) {
+    capture.output(file = file, res <- code(), print ("Done"))
+    return (res)
+}
+
+
+## mosek
 res <- foreach(i = levels(c$x.rect), .combine = list,
                 .packages = c('Rglpk', 'Matrix')) %:% 
     foreach(j = levels(c$y.rect), .combine = list,
@@ -221,19 +288,53 @@ res <- foreach(i = levels(c$x.rect), .combine = list,
     }
 
 
-res <- fOptim(f = f, c = c, params = params)
+opt.mosek <- list(dparam = list(OPTIMIZER_MAX_TIME = 3600))
 
-cat(paste0(round(res$objval), ' ', 0, '\n'))
+res <- fOptim(f = f, c = c, params = params,
+              solver = solver.mosek, opt = opt.mosek)
+
+
+## gurobi
+opt.gurobi <- list(Presolve=2,
+                   ##TuneOutput = 0,
+                   ##OutputFlag = 0,
+                   TimeLimit = 3600.,
+                   ConcurrentMIP =  4)
+    
+res <- fOptim(f = f, c = c, params = params,
+              solver = solver.gurobi, opt = opt.gurobi)
+
+res <- foreach(i = levels(c$x.rect), .combine = list) %:% 
+    foreach(j = levels(c$y.rect), .combine = list,
+            .packages = c('gurobi', 'Matrix')) %dopar%
+
+        capture.output.helper(
+            file = paste0('output_', i, '_', j),
+            code = function() {
+                c.idx <- which(c$x.rect == i & c$y.rect == j)
+                f.idx <- which(f$x.rect == i & f$y.rect == j)
+                
+                p <- list(N = length(f.idx), M = length(c.idx))
+                
+                list(c.idx = c.idx, f.idx = f.idx,
+                     res = fOptim(f = f[f.idx, ], c = c[c.idx, ],
+                         params = p,
+                         solver = solver.gurobi,
+                         opt = opt.gurobi))
+            })
+
+
+cat(paste0(round(res[[1]]), ' ', 0, '\n'))
 
 ## cw <- sapply(
 ##     split(res$solution[-(1:params$N)],
 ##           sapply(1:params$M, function(c) rep(c, params$N))),
 ##     function(c) which.max(c))
 
-
-
-
-cat(paste0(cw - 1, collapse = ' '))
+cat(paste0(res[[2]] - 1, collapse = ' '))
 cat('\n')
 
-
+conn <- file('sol4_1.txt', 'w')
+writeLines(paste0(round(res[[1]]), ' ', 1), conn)
+writeLines(paste0(res[[2]] - 1, collapse = ' '), conn)
+close(conn)
