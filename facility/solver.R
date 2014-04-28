@@ -10,7 +10,8 @@ file <- substr(args, 7, nchar(args[1]))
 ## 6
 file <- 'data/fl_500_7'
 
-file <- 'data/fl_100_1'
+## 7
+file <- 'data/fl_1000_2'
 
 params <- read.table(file, nrows = 1)
 names(params) <- c('N', 'M')
@@ -165,9 +166,9 @@ fOptim <- function(f, c, params, solver, opt) {
 
     types <- rep('B', params$N * (1 + params$M))
 
-    solver(obj, mat, dir, rhs, max, types, opt)
+    solver(obj, mat, dir, rhs, max, types, opt, params)
 }
-solver.Rglpk <- function(obj, mat, dir, rhs, max, type, opt) {
+solver.Rglpk <- function(obj, mat, dir, rhs, max, type, opt, params) {
     res <- Rglpk_solve_LP(obj, mat, dir, rhs, max = max, types = types)
 
     ## model  <- list()
@@ -200,7 +201,7 @@ solver.Rglpk <- function(obj, mat, dir, rhs, max, type, opt) {
     
     list(res$objval, cw)
 }
-solver.gurobi <- function(obj, mat, dir, rhs, max, type, opt) {
+solver.gurobi <- function(obj, mat, dir, rhs, max, type, opt, params) {
     model  <- list()
     
     model$A      <- mat
@@ -298,14 +299,16 @@ res <- fOptim(f = f, c = c, params = params,
 opt.gurobi <- list(Presolve=2,
                    ##TuneOutput = 0,
                    ##OutputFlag = 0,
-                   TimeLimit = 3600.,
+                   TimeLimit = 600.,
                    ConcurrentMIP =  4)
     
 res <- fOptim(f = f, c = c, params = params,
               solver = solver.gurobi, opt = opt.gurobi)
 
-res <- foreach(i = levels(c$x.rect), .combine = list) %:% 
-    foreach(j = levels(c$y.rect), .combine = list,
+res <- foreach(i = levels(c$x.rect),
+               .combine = list, .multicombine = F) %:% 
+
+    foreach(j = levels(c$y.rect), .combine = list, .multicombine = F,
             .packages = c('gurobi', 'Matrix')) %dopar%
 
         capture.output.helper(
@@ -323,6 +326,9 @@ res <- foreach(i = levels(c$x.rect), .combine = list) %:%
                          opt = opt.gurobi))
             })
 
+res.flat <- unlist(res, recursive = FALSE)
+
+stopCluster(cl)
 
 cat(paste0(round(res[[1]]), ' ', 0, '\n'))
 
