@@ -273,6 +273,8 @@ capture.output.helper <- function (file, code) {
     return (res)
 }
 
+optimRes <- setRefClass('optimRes',
+                        fields = c('c.idx', 'f.idx', 'res'))
 
 ## mosek
 res <- foreach(i = levels(c$x.rect), .combine = list,
@@ -318,15 +320,32 @@ res <- foreach(i = levels(c$x.rect),
                 f.idx <- which(f$x.rect == i & f$y.rect == j)
                 
                 p <- list(N = length(f.idx), M = length(c.idx))
-                
-                list(c.idx = c.idx, f.idx = f.idx,
+                optimRes <- setRefClass('optimRes',
+                        fields = c('c.idx', 'f.idx', 'res'))
+                optimRes(c.idx = c.idx, f.idx = f.idx,
                      res = fOptim(f = f[f.idx, ], c = c[c.idx, ],
                          params = p,
                          solver = solver.gurobi,
                          opt = opt.gurobi))
             })
 
-res.flat <- unlist(res, recursive = FALSE)
+res.flat <- unlist(res)
+
+res.full <- rep(0, params$M)
+res.obj <- 0
+
+for(i in 1:length(res.flat)) {
+    res.full[res.flat[[i]]$c.idx] <-
+        res.flat[[i]]$f.idx[res.flat[[i]]$res[[2]]]
+
+    res.obj <- res.obj + res.flat[[i]]$res[[1]]
+}
+
+conn <- file('sol7.txt', 'w')
+writeLines(paste0(round(res.obj), ' ', 0), conn)
+writeLines(paste0(res.full - 1, collapse = ' '), conn)
+close(conn)
+
 
 stopCluster(cl)
 
@@ -340,7 +359,8 @@ cat(paste0(round(res[[1]]), ' ', 0, '\n'))
 cat(paste0(res[[2]] - 1, collapse = ' '))
 cat('\n')
 
-conn <- file('sol4_1.txt', 'w')
+conn <- file('sol7.txt', 'w')
 writeLines(paste0(round(res[[1]]), ' ', 1), conn)
 writeLines(paste0(res[[2]] - 1, collapse = ' '), conn)
 close(conn)
+
